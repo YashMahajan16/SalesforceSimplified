@@ -1,0 +1,30 @@
+<template>
+    <template if:true={showTable}>
+        <lightning-card  title="Data Table">
+            <c-datatable-utility records={allRecords} 
+            total-records={allRecords.length} 
+            columns = {columns}
+            key-field="Id"
+            show-search-box="true"            
+            max-row-selection={allRecords.length}
+            onpaginatorchange={handlePaginatorChange}
+            onsetselectedrecords={handleAllSelectedRows}
+            table-height="200">
+            </c-datatable-utility>     
+        </lightning-card>
+    </template>
+  
+    <lightning-card  title="In Parent Componant">
+        <lightning-button variant="brand"
+        label="Change Style"
+        title="Change Style"
+        onclick={changeStyle}
+        class="slds-m-left_xxx-small"></lightning-button>         
+        <template for:each={selectedRows} for:item="rec">
+            <li key={rec.Id}>
+                {rec.Id}
+            </li>        
+        </template>
+    </lightning-card>
+
+</template>
